@@ -1,0 +1,231 @@
+{
+  "Id": "9f832399-4887-46b0-8f21-2ee284f538e2",
+  "GameObjects": [
+    {
+      "Id": "bfc59c12-1ed2-4f91-8956-a95a315eac3c",
+      "Name": "Sun",
+      "Rotation": "-0.0729315,0.4822396,0.1305433,0.8631827",
+      "Tags": "light_directional,light",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "DirectionalLight",
+          "FogMode": "Enabled",
+          "FogStrength": 1,
+          "LightColor": "0.94419,0.97767,1,1",
+          "Shadows": true,
+          "SkyColor": "0.2532,0.32006,0.35349,1"
+        }
+      ]
+    },
+    {
+      "Id": "00344a8c-fa5e-45ae-b12a-10bb781a1dc3",
+      "Name": "2D Skybox",
+      "Tags": "skybox",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "SkyBox2D",
+          "SkyMaterial": "materials/skybox/light_test_sky_sunny03.vmat",
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "EnvmapProbe",
+          "Bounds": {
+            "Mins": "-512,-512,-512",
+            "Maxs": "512,512,512"
+          },
+          "Feathering": 0.02,
+          "Projection": "Sphere",
+          "Texture": "textures/cubemaps/default2.vtex",
+          "TintColor": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "Id": "ae9143cc-9525-4c82-a365-c6401ce57e67",
+      "Name": "Player",
+      "Position": "-480.2439,0.0002172257,129.586",
+      "Tags": "player",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "PlayerScript",
+          "Camera": {
+            "_type": "gameobject",
+            "go": "8505f961-81ad-4e3f-81f7-daddd3d1b2d1"
+          },
+          "Controller": {
+            "_type": "component",
+            "go": "ae9143cc-9525-4c82-a365-c6401ce57e67",
+            "component_type": "CharacterController"
+          },
+          "EyePosition": "0,0,0",
+          "FlyUpDownSpeed": 100,
+          "Friction": 1,
+          "GameOfLife": {
+            "_type": "gameobject",
+            "go": "17a894c7-5df1-48f9-9f42-39707a6c3a3c"
+          },
+          "Player": {
+            "_type": "gameobject",
+            "go": "ae9143cc-9525-4c82-a365-c6401ce57e67"
+          },
+          "RunSpeed": 250,
+          "WalkSpeed": 120
+        },
+        {
+          "__type": "CharacterController",
+          "Acceleration": 10,
+          "Bounciness": 0.3,
+          "GroundAngle": 45,
+          "Height": 64,
+          "IgnoreLayers": "",
+          "Radius": 16,
+          "StepHeight": 18
+        }
+      ],
+      "Children": [
+        {
+          "Id": "8505f961-81ad-4e3f-81f7-daddd3d1b2d1",
+          "Name": "Camera",
+          "Position": "0,0,0",
+          "Tags": "maincamera",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "CameraComponent",
+              "BackgroundColor": "0.33333,0.46275,0.52157,1",
+              "ClearFlags": "All",
+              "FieldOfView": 60,
+              "IsMainCamera": true,
+              "Orthographic": false,
+              "OrthographicHeight": 1204,
+              "Priority": 1,
+              "RenderExcludeTags": "",
+              "RenderTags": "",
+              "TargetEye": "None",
+              "Viewport": "0,0,1,1",
+              "ZFar": 10000,
+              "ZNear": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "17a894c7-5df1-48f9-9f42-39707a6c3a3c",
+      "Name": "game_of_life",
+      "Scale": "10,10,10",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "BoxCollider",
+          "Center": "0,0,-1",
+          "IsTrigger": false,
+          "Scale": "100,100,2",
+          "Static": false,
+          "Surface": null
+        },
+        {
+          "__type": "InitializeCells",
+          "cell": {
+            "_type": "gameobject",
+            "go": "048a6e2a-e455-40f7-93df-acc655ac3a5b"
+          },
+          "plane": {
+            "_type": "gameobject",
+            "go": "17a894c7-5df1-48f9-9f42-39707a6c3a3c"
+          }
+        },
+        {
+          "__type": "InputFunctionality",
+          "paused": true,
+          "UpdateAfterThisManyFixedFrames": 25
+        }
+      ],
+      "Children": [
+        {
+          "Id": "048a6e2a-e455-40f7-93df-acc655ac3a5b",
+          "Name": "Cell0000",
+          "Position": "46.875,46.875,2.5",
+          "Scale": "0.125,0.125,0.1",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "ModelRenderer",
+              "BodyGroups": 18446744073709551615,
+              "MaterialGroup": null,
+              "MaterialOverride": null,
+              "Model": "models/dev/box.vmdl",
+              "RenderType": "On",
+              "Tint": "0,0,0,1"
+            },
+            {
+              "__type": "BoxCollider",
+              "Center": "0,0,0",
+              "IsTrigger": false,
+              "Scale": "50,50,50",
+              "Static": false,
+              "Surface": null
+            },
+            {
+              "__type": "CellScript",
+              "alive": false,
+              "x": 0,
+              "y": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "c22fdb0b-18c4-4063-8d32-8fe29eac70e4",
+      "Name": "Screen",
+      "Position": "1000,0,120",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "ScreenPanel",
+          "AutoScreenScale": true,
+          "Opacity": 1,
+          "Scale": 1,
+          "ZIndex": 100
+        },
+        {
+          "__type": "TextRenderer",
+          "Color": "1,1,1,1",
+          "FontFamily": "Poppins",
+          "FontSize": 32,
+          "Scale": 1,
+          "Text": "Left click: Create cell\nRight click: Kill cell\nP: Play/Pause\nR: Reset"
+        }
+      ]
+    }
+  ],
+  "SceneProperties": {
+    "FixedUpdateFrequency": 50,
+    "Lerping": true,
+    "MaxFixedUpdates": 5,
+    "NetworkFrequency": 60,
+    "ThreadedAnimation": true,
+    "TimeScale": 1,
+    "UseFixedUpdate": true,
+    "NavMesh": {
+      "Enabled": false,
+      "IncludeStaticBodies": true,
+      "IncludeKeyframedBodies": true,
+      "EditorAutoUpdate": true,
+      "AgentHeight": 64,
+      "AgentRadius": 16,
+      "AgentStepSize": 18,
+      "AgentMaxSlope": 40,
+      "ExcludedBodies": "",
+      "IncludedBodies": ""
+    }
+  },
+  "Title": "minimal",
+  "Description": "",
+  "LastSaved": "2024-02-24T21:23:30.5915408\u002B01:00",
+  "__references": []
+}
